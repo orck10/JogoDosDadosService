@@ -7,17 +7,17 @@ import com.example.demo.dto.Jogo;
 public interface JogoService {
 	
 	
-	List<Jogo> getAll();
+	public List<Jogo> getAll();
 	
-	Jogo getById(String id);
+	public Jogo getById(String id);
 	
-	Jogo addNewJogo(Jogo jogo);
+	public Jogo addNewJogo(Jogo jogo);
 	
-	Jogo updateJogo(Jogo jogo);
+	public Jogo updateJogo(Jogo jogo);
 	
-	Boolean deleteJogo(String id);
+	public Boolean deleteJogo(String id);
 	
-	List<Jogo> getByControlador(String nome);
+	public List<Jogo> getByControlador(String nome);
 	
-	List<Jogo> getByAticoControlador(String nome);
+	public List<Jogo> getByAticoControlador(String nome);
 }

@@ -16,6 +16,7 @@ public class JogoServiceImp implements JogoService{
 	@Autowired
 	private RepoJogo repoJogo;
 	
+	
 	@Override
 	public List<Jogo> getAll() {
 		List<Jogo> temp = this.repoJogo.findAll();

@@ -10,9 +10,9 @@ import com.example.demo.dto.Jogo;
 public interface RepoJogo extends MongoRepository<Jogo, String> {
 
 	@Query(value="{ controlador : ?0}")
-	List<Jogo> findByContolador(String nome);
+	public List<Jogo> findByContolador(String nome);
 	
 	@Query(value="{ controlador : ?0, ativo : ?1}")
-	List<Jogo> findByAtivoContolador(String nome, Boolean ativo);
+	public List<Jogo> findByAtivoContolador(String nome, Boolean ativo);
 
 }
