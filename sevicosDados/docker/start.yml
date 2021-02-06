@@ -11,10 +11,21 @@ services:
     volumes:
       - ./mongovolume:/data/db
     networks:
-      - whatsnetwork
+      - jogodados
     ports:
       - '27017:27017'
-
+  jogodados:
+    container_name: servidordados
+    restart: always
+    build:
+      context: ../
+      dockerfile: Dockerfile
+    ports:
+      - '8080:8080'
+    networks:
+      - jogodados
+    depends_on:
+      - mongo
 networks:
-  whatsnetwork:
+  jogodados:
     driver: bridge
