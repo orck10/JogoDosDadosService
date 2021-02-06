@@ -11,7 +11,7 @@ public interface JogoService {
 	
 	public Jogo getById(String id);
 	
-	public Jogo addNewJogo(Jogo jogo);
+	public Jogo addNewJogo(String nome);
 	
 	public Jogo updateJogo(Jogo jogo);
 	

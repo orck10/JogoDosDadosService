@@ -37,9 +37,7 @@ public class JogoController {
 	
 	@GetMapping(path = "/novoSoma")
 	public ResponseEntity<Jogo> novoJogo(@RequestParam(value = "nome", defaultValue = "Teste", required = true) String nome){
-		Jogo jogo = new Jogo();
-		jogo.gerar(true, nome);
-		return ResponseEntity.ok(jogoService.addNewJogo(jogo));
+		return ResponseEntity.ok(jogoService.addNewJogo(nome));
 	}
 	
 	@GetMapping(path = "/controlador")

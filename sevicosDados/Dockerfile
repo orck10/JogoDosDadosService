@@ -1,7 +1,11 @@
 FROM openjdk:12
-
-#copy form target to root
-ADD target target
+ADD .mvn .mvn
+ADD src src
+ADD pom.xml pom.xml
+ADD mvnw mvnw
+RUN chmod a+x mvnw
+RUN ./mvnw clean install
+RUN rm -r src
 
 WORKDIR /target
 

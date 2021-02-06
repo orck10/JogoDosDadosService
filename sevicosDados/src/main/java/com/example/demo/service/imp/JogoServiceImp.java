@@ -1,14 +1,18 @@
 package com.example.demo.service.imp;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.example.demo.dto.Contador;
 import com.example.demo.dto.Jogo;
+import com.example.demo.repositories.RepoContador;
 import com.example.demo.repositories.RepoJogo;
 import com.example.demo.service.JogoService;
+import com.example.demo.utils.EscoposContador;
 
 @Service
 public class JogoServiceImp implements JogoService{
@@ -16,6 +20,8 @@ public class JogoServiceImp implements JogoService{
 	@Autowired
 	private RepoJogo repoJogo;
 	
+	@Autowired
+	private RepoContador repoContador;
 	
 	@Override
 	public List<Jogo> getAll() {
@@ -25,12 +31,28 @@ public class JogoServiceImp implements JogoService{
 
 	@Override
 	public Jogo getById(String id) {
-		Optional<Jogo> j = this.repoJogo.findById(id);
-		return j.get();
+		List<Jogo> j = this.repoJogo.findByNumeroFase(id);
+		return j.get(0);
 	}
 
 	@Override
-	public Jogo addNewJogo(Jogo jogo) {
+	public Jogo addNewJogo(String nome) {
+		Jogo jogo = new Jogo();
+		jogo.gerar(true, nome);
+		List<Contador> cont = repoContador.findByEscopo(EscoposContador.CONTADORJOGO.getEscopo());
+		if(cont == null || cont.isEmpty() || cont.size() < 1) {
+			Contador contador = new Contador(EscoposContador.CONTADORJOGO.getEscopo(), 1);
+			cont = new ArrayList<Contador>();
+			contador = repoContador.save(contador);
+			cont.add(contador);
+			jogo.setNumeroFase(contador.getContador().toString());
+		}
+		else {
+			Contador contador = cont.get(0);
+			contador.setContador(contador.getContador()+1);
+			contador = repoContador.save(contador);
+			jogo.setNumeroFase(contador.getContador().toString());
+		}
 		return this.repoJogo.save(jogo);
 	}
 

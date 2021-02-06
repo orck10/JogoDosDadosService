@@ -11,6 +11,7 @@ public class Jogo {
 	private ListaFase fases;
 	private Boolean ativo;
 	private String controlador;
+	private String numeroFase;
 	
 	public Jogo(String id, ListaFase fases, Boolean ativo, String controlador) {
 		super();
@@ -64,8 +65,17 @@ public class Jogo {
 		this.controlador = controlador;
 	}
 
+	public String getNumeroFase() {
+		return numeroFase;
+	}
+
+	public void setNumeroFase(String mumeroFase) {
+		this.numeroFase = mumeroFase;
+	}
+
 	@Override
 	public String toString() {
-		return "Jogo [id=" + id + ", fases=" + fases + ", ativo=" + ativo + "]";
+		return "Jogo [id=" + id + ", fases=" + fases + ", ativo=" + ativo + ", controlador=" + controlador
+				+ ", mumeroFase=" + numeroFase + "]";
 	}
 }

@@ -24,7 +24,7 @@ function getNovoJogo(){
     if(nomeResp != null && nomeResp != undefined && nomeResp != ""){
         var json = JSON.parse(getRequest(url));
         var id = document.getElementById("idJogo");
-        id.value = json.id;
+        id.value = json.numeroFase;
         console.log(json);
     }else{
         alert('Preencha o campo "nome"');
@@ -125,7 +125,7 @@ function motarCelulasJogos(jsonJogos){
 	var ativo = [];
 	
 	for(var i = 0; i < jsonJogos.length; i++){
-		ids[i] = jsonJogos[i].id;
+		ids[i] = jsonJogos[i].numeroFase;
 		ativo[i] = jsonJogos[i].ativo;
  	}
 	
