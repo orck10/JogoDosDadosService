@@ -9,5 +9,5 @@ RUN rm -r src
 
 WORKDIR /target
 
-EXPOSE 80
+EXPOSE 8080
 ENTRYPOINT ["java", "-jar", "./sevicosDados-0.0.1-SNAPSHOT.war"]
