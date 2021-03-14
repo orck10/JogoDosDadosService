@@ -31,6 +31,19 @@ function getNovoJogo(){
     }
 }
 
+function getNovoJogoSub(){
+    var nomeResp = document.getElementById("nomeResp").value;
+    var url = host+"/api/jogo/novoSubtracao?nome="+nomeResp;
+    if(nomeResp != null && nomeResp != undefined && nomeResp != ""){
+        var json = JSON.parse(getRequest(url));
+        var id = document.getElementById("idJogo");
+        id.value = json.numeroFase;
+        console.log(json);
+    }else{
+        alert('Preencha o campo "nome"');
+    }
+}
+
 function getResultados(){
     var idJogo = document.getElementById("idJogo").value;
     var url = host+"/api/resultado/resultados?id="+idJogo;
