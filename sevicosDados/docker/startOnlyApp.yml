@@ -1,0 +1,18 @@
+version: '3.1'
+
+services:
+  jogodados:
+    container_name: servidordados
+    restart: always
+    build:
+      context: ../
+      dockerfile: Dockerfile
+    ports:
+      - '80:80'
+    networks:
+      - jogodados
+    depends_on:
+      - mongo
+networks:
+  jogodados:
+    driver: bridge

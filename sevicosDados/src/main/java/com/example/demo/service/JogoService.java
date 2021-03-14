@@ -13,6 +13,8 @@ public interface JogoService {
 	
 	public Jogo addNewJogo(String nome);
 	
+	public Jogo addNewJogoSub(String nome);
+	
 	public Jogo updateJogo(Jogo jogo);
 	
 	public Boolean deleteJogo(String id);

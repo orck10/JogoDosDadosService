@@ -46,8 +46,8 @@ public class ListaFase {
 			}
 		}else {
 			while(cont <= 5) {
-				Integer n1 = ThreadLocalRandom.current().nextInt(1, 7);
-				Integer n2 = ThreadLocalRandom.current().nextInt(1, n1+1);
+				Integer n1 = ThreadLocalRandom.current().nextInt(3, 7);
+				Integer n2 = ThreadLocalRandom.current().nextInt(1, n1);
 				
 				Fase fase = new Fase(n1, n2, soma);
 				

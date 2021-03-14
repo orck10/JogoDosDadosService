@@ -40,6 +40,11 @@ public class JogoController {
 		return ResponseEntity.ok(jogoService.addNewJogo(nome));
 	}
 	
+	@GetMapping(path = "/novoSubitracao")
+	public ResponseEntity<Jogo> novoSubitracao(@RequestParam(value = "nome", defaultValue = "Teste", required = true) String nome){
+		return ResponseEntity.ok(jogoService.addNewJogoSub(nome));
+	}
+	
 	@GetMapping(path = "/controlador")
 	public ResponseEntity<List<Jogo>> getAllByControlador(@RequestParam(value = "nome", defaultValue = "Teste", required = true) String nome){
 		return ResponseEntity.ok(jogoService.getByControlador(nome));
