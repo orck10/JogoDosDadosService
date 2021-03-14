@@ -40,7 +40,7 @@ public class JogoController {
 		return ResponseEntity.ok(jogoService.addNewJogo(nome));
 	}
 	
-	@GetMapping(path = "/novoSubitracao")
+	@GetMapping(path = "/novoSubtracao")
 	public ResponseEntity<Jogo> novoSubitracao(@RequestParam(value = "nome", defaultValue = "Teste", required = true) String nome){
 		return ResponseEntity.ok(jogoService.addNewJogoSub(nome));
 	}
