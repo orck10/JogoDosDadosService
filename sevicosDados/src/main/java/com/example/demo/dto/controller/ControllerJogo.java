@@ -4,6 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.example.demo.dto.Jogo;
+import com.example.demo.error.ErroGenerico;
 import com.example.demo.service.JogoService;
 
 @Service
@@ -13,10 +14,10 @@ public class ControllerJogo {
 	
 	public Jogo buscarJogoAtivPorId(String id) {
 		Jogo jogo = jogoService.getById(id);
-		if(jogo.getAtivo()) {
+		if(jogo != null && jogo.getAtivo()) {
 			return jogo;
 		}
-		return null;
+		throw new ErroGenerico("Não há jogos ativos com esse id");
 	}
 	
 	public Jogo desativarJogo(String id) {

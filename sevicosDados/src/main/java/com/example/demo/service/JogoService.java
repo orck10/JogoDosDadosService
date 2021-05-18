@@ -11,9 +11,9 @@ public interface JogoService {
 	
 	public Jogo getById(String id);
 	
-	public Jogo addNewJogo(String nome);
+	public Jogo addNewJogo(String nome) throws Exception;
 	
-	public Jogo addNewJogoSub(String nome);
+	public Jogo addNewJogoSub(String nome) throws Exception;
 	
 	public Jogo updateJogo(Jogo jogo);
 	

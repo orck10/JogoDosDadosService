@@ -16,6 +16,9 @@ public interface RepoJogo extends MongoRepository<Jogo, String> {
 	public List<Jogo> findByAtivoContolador(String nome, Boolean ativo);
 	
 	@Query(value="{ numeroFase : ?0}")
-	public List<Jogo> findByNumeroFase(String numeroFase);
+	public Jogo findByNumeroFase(String numeroFase);
+	
+	@Query(value="{ numeroFase : ?0, ativo : true}")
+	public List<Jogo> findByNumeroFaseAtivo(String numeroFase);
 
 }

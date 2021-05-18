@@ -9,6 +9,8 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.example.demo.service.ResultadoService;
 
+import static com.example.demo.utils.CriaHeaders.criaHeaders;
+
 @RestController
 @RequestMapping(path = "/api/resultado")
 public class ResultadosController {
@@ -16,8 +18,9 @@ public class ResultadosController {
 	@Autowired
 	private ResultadoService resultadoService;
 	
+	
 	@GetMapping(path = "/resultados")
 	public ResponseEntity<?> novoJogo(@RequestParam(value = "id", defaultValue = "Teste", required = true) String id){
-		return ResponseEntity.ok(resultadoService.getByJogoId(id));
+		return ResponseEntity.ok().headers(criaHeaders()).body(resultadoService.getByJogoId(id));
 	}
 }

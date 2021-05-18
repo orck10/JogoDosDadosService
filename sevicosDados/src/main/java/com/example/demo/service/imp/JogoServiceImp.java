@@ -8,6 +8,7 @@ import org.springframework.stereotype.Service;
 
 import com.example.demo.dto.Contador;
 import com.example.demo.dto.Jogo;
+import com.example.demo.error.ErroGenerico;
 import com.example.demo.repositories.RepoContador;
 import com.example.demo.repositories.RepoJogo;
 import com.example.demo.service.JogoService;
@@ -30,12 +31,18 @@ public class JogoServiceImp implements JogoService{
 
 	@Override
 	public Jogo getById(String id) {
-		List<Jogo> j = this.repoJogo.findByNumeroFase(id);
-		return j.get(0);
+		try {
+			return this.repoJogo.findByNumeroFase(id);
+		}catch (Exception e) {
+			throw new ErroGenerico(e.getMessage());
+		}
 	}
 
 	@Override
-	public Jogo addNewJogo(String nome) {
+	public Jogo addNewJogo(String nome) throws Exception {
+		if(nome == null || nome.isEmpty() || nome == "") {
+			throw new ErroGenerico("Nome é obrogatório");
+		}
 		return this.repoJogo.save(novoJogo(nome, true));
 	}
 
@@ -76,6 +83,9 @@ public class JogoServiceImp implements JogoService{
 
 	@Override
 	public Jogo addNewJogoSub(String nome) {
+		if(nome == null || nome.isEmpty() || nome == "") {
+			throw new ErroGenerico("Nome é obrogatório");
+		}
 		return this.repoJogo.save(novoJogo(nome, false));
 	}
 	
